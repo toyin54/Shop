@@ -26,14 +26,8 @@ public class ShoppingCart {
         this.coupon = "";
         this.totalAmount = 0;
         this.payableAmount = 0;
-        if ( (person.getState() != null && stateList.contains(person.getState())) )
-        {
-            this.tax = 1.06;
-        }
-        else {
-                  this.tax = 1.0;
-        }
-//        this.tax = 0;
+
+        this.tax = 0;
         this.cost = 0;
     }
     public void addToCart(Item item) {
@@ -74,6 +68,15 @@ public class ShoppingCart {
         }
     }
 
+    public double getTax() {
+        if ((person.getState() != null && stateList.contains(person.getState()))) {
+            return 1.06;
+        } else {
+            return 1.0;
+        }
+    }
+
+
     public double shippingCost(){
         if (getTotalAmount() > 50){
             cost = 0;
@@ -90,7 +93,7 @@ public class ShoppingCart {
 
     public double getTotalAmountTax()
     {
-        return (getTotalAmount() + tax);
+        return (getTotalAmount() + getTax() + shippingCost());
     }
     public void applyCoupon(String coupon) {
         this.coupon = coupon;

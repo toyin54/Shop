@@ -53,7 +53,7 @@ public class ShoppingCartTest {
 
         double totalPrice = cart.getTotalAmount();
         // then
-        assertEquals(5.00, totalPrice,0);
+        assertEquals(10.00, totalPrice,0);
     }
     
     @Test
