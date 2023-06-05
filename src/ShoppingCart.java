@@ -15,21 +15,40 @@ public class ShoppingCart {
 
     double cost;
     String coupon;
-
+    String state;
     String[] states = {"IL","CA","NY"};
     List<String> stateList = Arrays.asList(states);
 
-    Shopper person;
+
+    int shipping;
     ShoppingCart(String name) {
         this.cartName = name;
         this.item = new ArrayList<Item>();
         this.coupon = "";
         this.totalAmount = 0;
         this.payableAmount = 0;
-
+        this.shipping = 0;
         this.tax = 0;
         this.cost = 0;
+        this.state = "";
     }
+
+    public int getShipping() {
+        return shipping;
+    }
+
+    public void setState(String state) {
+        this.state = state;
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    public void setShipping(int shipping) {
+        this.shipping = shipping;
+    }
+
     public void addToCart(Item item) {
         this.item.add(item);
     }
@@ -69,7 +88,7 @@ public class ShoppingCart {
     }
 
     public double getTax() {
-        if ((person.getState() != null && stateList.contains(person.getState()))) {
+        if (( stateList.contains(state))) {
             return 1.06;
         } else {
             return 1.0;
@@ -79,13 +98,13 @@ public class ShoppingCart {
 
     public double shippingCost(){
         if (getTotalAmount() > 50){
-            cost = 0;
+            return  0;
         }
-        else if (person.getShipping() == 1)
+        else if (shipping == 1)
         {
             return 10.0;
         }
-        else if (person.getShipping() == 2) {
+        else if (shipping == 2) {
             return 25.0;
         }
         return 0.0;
@@ -93,7 +112,7 @@ public class ShoppingCart {
 
     public double getTotalAmountTax()
     {
-        return (getTotalAmount() + getTax() + shippingCost());
+        return (getTotalAmount()  + shippingCost() * getTax());
     }
     public void applyCoupon(String coupon) {
         this.coupon = coupon;
