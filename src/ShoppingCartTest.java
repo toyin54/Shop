@@ -58,8 +58,8 @@ public class ShoppingCartTest {
     
     @Test
     public void TotalCostTestState() {
-    	cart.setShipping(1);
-    	cart.setState("IL");
+        cart.setShipping(1);
+        cart.setState("IL");
         cart.addToCart(i1,1);
         cart.addToCart(i2,1);
         
@@ -90,6 +90,20 @@ public class ShoppingCartTest {
         double totalPrice = cart.getTotalAmountTax();
 
         assertEquals(30.0, totalPrice,0.3);
+    }
+
+    @Test
+    public void RemoveItemtest(){
+
+        cart.setShipping(2);
+        cart.setState("NQ");
+        assertEquals(cart.item.size(), 0);
+        cart.addToCart(i1,1);
+        assertEquals(cart.item.size(), 1);
+        cart.removeFromCart(i1);
+        assertEquals(cart.item.size(), 0);
+
+
     }
 
 
