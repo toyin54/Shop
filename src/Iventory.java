@@ -4,6 +4,10 @@ import java.util.List;
 import java.util.Objects;
 
 public class Iventory {
+
+    public Iventory() {
+    }
+
     static List<Item> itemlist = new ArrayList<>();
     private HashMap<String, Double> itemlist_map = new HashMap<String, Double>();
 

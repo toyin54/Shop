@@ -2,33 +2,51 @@
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 import java.util.Scanner;
+
+
 
 // Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
 // then press Enter. You can now see whitespace characters in your code.
 public class Main {
     public static ShoppingCart cart = new ShoppingCart("ds");
     public static String name;
-    public static String state;
-    public static int shipping;
+    public static Iventory iventory = new Iventory();
     static List<Item> itemlist = new ArrayList<>();
-    public static Scanner input = new Scanner(System.in);
+    public static Scanner sc = new Scanner(System.in);
     // Initializing the Shopper
     public static Shopper person = new Shopper();
     //Creation of Items
-    public static Item product1 = new Item("laptop", 20.0);
-    public static Item product2 = new Item("Mop", 5.0);
-    public static Item product3 = new Item("TV", 100.0);
-    public  static Item product4 = new Item("IPAD", 250.0);
+
+    static Item i1 = new Item("laptop", 3);
+    static Item i2 = new Item("cheese", 2);
+    static Item i3 = new Item("bread", 1);
+    static Item i4 = new Item("eggs", 50);
+    static Item i5 = new Item("Chicken Salami", 2);
+
+    static String  state , shipping;
+
+        public static void shops() {
+        System.out.println("----------------------");
+        System.out.println("Welcome to the  Store");
+        Item i1 = new Item("Laptop", 3);
+        Item i2 = new Item("Cheese Slices", 2);
+        Item i3 = new Item("Bread", 1);
+        Item i4 = new Item("Eggs", 50);
+        Item i5 = new Item("Chicken Salami", 2);
+        iventory.add(i1);iventory.add(i2);iventory.add(i3);iventory.add(i4);iventory.add(i5);
+    }
     public static void shop(){
         System.out.println("----------------------");
         System.out.println("Welcome to the  Store");
-        itemlist.add(product1);
-        itemlist.add(product2);
-        itemlist.add(product3);
-        itemlist.add(product4);
+        itemlist.add(i1);
+        itemlist.add(i2);
+        itemlist.add(i3);
+        itemlist.add(i4);
+        itemlist.add(i5);
     }
+
+
     public static Item findList(String name){
         for(Item item : itemlist){
             //if (Objects.equals(item.getpName() , name));
@@ -41,14 +59,19 @@ public class Main {
     }
 
 
-    public static void personal() {
+    public static void createShopper() {
+
+
         System.out.println("What is Your Name");
-        name = input.nextLine();
+        name = sc.nextLine();
         person.setName(name);
         System.out.println("What is Your State or Residence");
-        state = input.nextLine();
+        state = sc.nextLine();
         cart.setState(state); //Set State
-        ;// Input State into cart
+        System.out.println("What is Your Shipping Speed");
+        shipping = sc.nextLine();
+        cart.setState(shipping); //Set State
+
     }
 
 
@@ -66,25 +89,22 @@ public class Main {
                 ;
         System.out.println(actions);
         do{
-            userinput = input.nextLine();
+            userinput = sc.nextLine();
             if(userinput.equalsIgnoreCase("A")){
-                product1.ItemList();
-                product2.ItemList();
-                product3.ItemList();
-                product4.ItemList();
+                iventory.ItemList();
             }
             //
             if(userinput.equalsIgnoreCase("B")){
                 System.out.println("Type in The Product Name");
-                String item = input.nextLine();
+                String item = sc.nextLine();
                 System.out.println("How many Items would you like to add");
-                int quant = input.nextInt();
+                int quant = sc.nextInt();
                 cart.addToCart(findList(item),2);
             }
             if(userinput.equalsIgnoreCase("C")){
                 System.out.println("Contents of Shopping cart");  //for loop to iterate through cart?
 
-                cart.getItems();
+                cart.showCart();
 
             }
             if(userinput.equalsIgnoreCase("D")){
@@ -98,25 +118,21 @@ public class Main {
             }
 
 
-
-
-
         }while(!userinput.contains("quit"));
 
-        System.out.println("Choose Shipping");
-        shipping = input.nextInt();
-        cart.setShipping(shipping);
-        cart.setShipping(shipping);//Set the shipping value
 
-        System.out.println("Transaction completed, your total was after tax is  "+ cart.getTotalAmount());
+
+        System.out.println("Transaction completed, your total was after tax is  "+ cart.getTotalAmountTax());
 
     }
-    public static void main(String[] args) {
-        // Press Alt+Enter with your caret at the highlighted text to see how
-        // IntelliJ IDEA suggests fixing it.
-        shop();
-        personal();
-        storefront();
+        public static void main(String[] args) {
+            // Press Alt+Enter with your caret at the highlighted text to see how
+            // IntelliJ IDEA suggests fixing it.
+            shop();
+            shops();
+            createShopper();
+            storefront();
+
 
 
 
