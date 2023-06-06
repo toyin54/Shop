@@ -30,9 +30,9 @@ public class Main {
         System.out.println("----------------------");
         System.out.println("Welcome to the  Store");
         Item i1 = new Item("Laptop", 3);
-        Item i2 = new Item("Cheese Slices", 2);
-        Item i3 = new Item("Bread", 1);
-        Item i4 = new Item("Eggs", 50);
+        Item i2 = new Item("cheese", 2);
+        Item i3 = new Item("bread", 1);
+        Item i4 = new Item("eggs", 50);
         Item i5 = new Item("Chicken Salami", 2);
         iventory.add(i1);iventory.add(i2);iventory.add(i3);iventory.add(i4);iventory.add(i5);
     }
