@@ -104,7 +104,7 @@ public class Main {
             if(userinput.equalsIgnoreCase("C")){
                 System.out.println("Contents of Shopping cart");  //for loop to iterate through cart?
 
-                cart.showCart();
+                cart.getItems();
 
             }
             if(userinput.equalsIgnoreCase("D")){

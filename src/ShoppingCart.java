@@ -101,22 +101,24 @@ public class ShoppingCart {
 
 
     public double shippingCost(){
-        if (getTotalAmount() > 50){
-            return  0;
+        if (this.totalAmount > 50 ){
+            return 0;
         }
         else if (shipping == 1)
         {
-            return 10.0;
+            return   10.0;
         }
         else if (shipping == 2) {
-            return 25.0;
+            return   25.0;
         }
         return 0.0;
+
+
     }
 
     public double getTotalAmountTax()
     {
-        return (getTotalAmount()  + shippingCost() * getTax());
+        return ((this.getTotalAmount()  + this.shippingCost() )* this.getTax());
     }
     public void applyCoupon(String coupon) {
         this.coupon = coupon;

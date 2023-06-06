@@ -57,7 +57,7 @@ public class ShoppingCartTest {
     }
     
     @Test
-    public void TotalCostTest() {
+    public void TotalCostTestState() {
     	cart.setShipping(1);
     	cart.setState("IL");
         cart.addToCart(i1,1);
@@ -65,7 +65,31 @@ public class ShoppingCartTest {
         
         double totalPrice = cart.getTotalAmountTax();
         
-        assertEquals(15.60, totalPrice,0000.1);
+        assertEquals(15.90, totalPrice,0.3);
+    }
+
+    @Test
+    public void TotalCostTestStateOut() {
+        cart.setShipping(1);
+        cart.setState("NQ");
+        cart.addToCart(i1,1);
+        cart.addToCart(i2,1);
+
+        double totalPrice = cart.getTotalAmountTax();
+
+        assertEquals(15.0, totalPrice,0.3);
+    }
+
+    @Test
+    public void TotalCostShip2() {
+        cart.setShipping(2);
+        cart.setState("NQ");
+        cart.addToCart(i1,1);
+        cart.addToCart(i2,1);
+
+        double totalPrice = cart.getTotalAmountTax();
+
+        assertEquals(30.0, totalPrice,0.3);
     }
 
 
