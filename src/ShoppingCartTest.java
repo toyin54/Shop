@@ -19,11 +19,11 @@ public class ShoppingCartTest {
     public void shouldAddNewProduct() throws Exception {
 
         /* add the item to the cart */
-        cart.addToCart(i1);
-        cart.addToCart(i2);
-        cart.addToCart(i3);
-        cart.addToCart(i4);
-        cart.addToCart(i5);
+        cart.addToCart(i1,1);
+        cart.addToCart(i2,1);
+        cart.addToCart(i3,1);
+        cart.addToCart(i4,1);
+        cart.addToCart(i5,1);
 
         // when
 
@@ -44,12 +44,12 @@ public class ShoppingCartTest {
     public void shouldCalculateTotalPriceForCart() throws Exception {
         // given
 
-        jose.setShipping(1);
-        jose.setState("IL");
-        cart.addToCart(i1);
-        cart.addToCart(i2);
-        cart.addToCart(i1);
-        cart.addToCart(i2);
+        cart.setShipping(1);
+        cart.setState("IL");
+        cart.addToCart(i1,1);
+        cart.addToCart(i2,1);
+        cart.addToCart(i1,1);
+        cart.addToCart(i2,1);
 
         double totalPrice = cart.getTotalAmount();
         // then
@@ -60,8 +60,8 @@ public class ShoppingCartTest {
     public void TotalCostTest() {
     	cart.setShipping(1);
     	cart.setState("IL");
-        cart.addToCart(i1);
-        cart.addToCart(i2);
+        cart.addToCart(i1,1);
+        cart.addToCart(i2,1);
         
         double totalPrice = cart.getTotalAmountTax();
         

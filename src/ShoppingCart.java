@@ -49,8 +49,12 @@ public class ShoppingCart {
         this.shipping = shipping;
     }
 
-    public void addToCart(Item item) {
-        this.item.add(item);
+    public void addToCart(Item item,int number) {
+        for(int i = 0; i < number ; i++){
+            this.item.add(item);
+
+        }
+
     }
     public void showCart() {
         ListIterator<Item> iterator = item.listIterator();

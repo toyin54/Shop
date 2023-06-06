@@ -34,10 +34,10 @@ public class Driver {
         person.setName(name);
         System.out.println("What is Your State or Residence");
         state = sc.nextLine();
-        person.setState(state); //Set State
+        cart.setState(state); //Set State
         System.out.println("What is Your Shipping Speed");
         shipping = sc.nextLine();
-        person.setState(shipping); //Set State
+        cart.setState(shipping); //Set State
 
     }
 
@@ -64,7 +64,7 @@ public class Driver {
                 String item = sc.nextLine();
                 System.out.println("How many Items would you like to add");
                 int quant = sc.nextInt();
-                cart.addToCart(Iventory.findList(item));
+                cart.addToCart(Iventory.findList(item),quant);
             }
             if(userinput.equalsIgnoreCase("C")){
                 System.out.println("Contents of Shopping cart");  //for loop to iterate through cart?

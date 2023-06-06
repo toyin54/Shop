@@ -11,16 +11,7 @@ public class Shopper {
         this.name = name;
     }
 
-    public int getShipping() {
-        return shipping;
-    }
-    public void setState(String state) {
-        this.state = state;
-    }
 
-    public void setShipping(int speed) {
-        this.shipping = speed;
-    }
 
 
     public void setNoItems(int noItems) {
