@@ -99,7 +99,7 @@ public class Main {
                 String item = sc.nextLine();
                 System.out.println("How many Items would you like to add");
                 int quant = sc.nextInt();
-                cart.addToCart(findList(item),2);
+                cart.addToCart(findList(item),quant);
             }
             if(userinput.equalsIgnoreCase("C")){
                 System.out.println("Contents of Shopping cart");  //for loop to iterate through cart?
