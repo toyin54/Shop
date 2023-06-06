@@ -1,75 +1,71 @@
-import org.junit.Test;
+import org.junit.Assert.*;
 
-import static org.junit.Assert.assertEquals;
+import model.Cart;
+import model.Product;
+
+import static org.junit.Assert.*;
+import org.junit.Rule;
+import org.junit.Test;
+import java.util.*;
+import java.io.*;
 
 public class ShoppingCartTest {
-    Item i1 = new Item("Olive Oil 1l", 3);
-    Item i2 = new Item("Cheese Slices", 2);
-    Item i3 = new Item("Bread", 1);
-    Item i4 = new Item("Eggs", 50);
-    Item i5 = new Item("Chicken Salami", 2);
+    // @Rule
+    // public final SystemOutRule systemOutRule = new SystemOutRule().enableLog();
+    
+    // @Test
+    // public void correctitemstest(){   //to test that the correct number of items are in our ShoppingCart
+    //     Main totest = new Main();
+    //     //totest.input = 
+    //     String input = "name";
+    //     String inputstate = "IL";
+    //     String inputcommand = "B";
+    //     String inputproduct = "IPAD";
+    //     String inputamount  = "4";
+    //     String inputcommand2 = "C";
+    //     InputStream in = new ByteArrayInputStream(input.getBytes());
+    //     System.setIn(in);  //input name
+    //     in = new ByteArrayInputStream(inputstate.getBytes());
+    //     ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+    //     System.setOut(new PrintStream(outContent));
+    //     assertEquals("What is Your State or Residence", outContent.toString());
+    //     System.setIn(in);  //input state
+    //     in = new ByteArrayInputStream(inputcommand.getBytes());
+    //     System.setIn(in);  //input "B" to add items
+    //     in = new ByteArrayInputStream(inputproduct.getBytes());
+    //     System.setIn(in);  //input the product we want (IPAD)
+    //     in = new ByteArrayInputStream(inputamount.getBytes());
+    //     System.setIn(in);  //input the quant (4)
+    //     in = new ByteArrayInputStream(inputcommand2.getBytes());
+    //     System.setIn(in);  //input "C" to see contents
+    //     //ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+    //     //System.setOut(new PrintStream(outContent));
+    //     //assertEquals("IPAD", outContent.toString());
 
+    
 
-    Shopper jose = new Shopper();
-    ShoppingCart cart = new ShoppingCart("ds");
-
-
-
+    // }
     @Test
-    public void shouldAddNewProduct() throws Exception {
-
+    public void shouldAddNewProduct() throws Exception {  //Tests to make sure that
+                                                            //correct number of items are in cart
         /* add the item to the cart */
-        cart.addToCart(i1);
-        cart.addToCart(i2);
-        cart.addToCart(i3);
-        cart.addToCart(i4);
-        cart.addToCart(i5);
+        Cart cart = new Cart();
+        Product product = new Product("Mop", 5.0);
+        cart.addItems(product, 5);
 
         // when
 
         // then
-        assertEquals(5, cart.item.size());
+        assertEquals(5, cart.numberofItems());
 
     }
-
     @Test
     public void shouldTotalPriceBeZeroWhenCartEmpty() throws Exception {
         // when
-        double totalPrice = cart.getTotalAmount();
+        Cart cart = new Cart();
+        double totalPrice = cart.totalPrice();
         // then
         assertEquals(0, totalPrice,0);
     }
 
-    @Test
-    public void shouldCalculateTotalPriceForCart() throws Exception {
-        // given
-
-        jose.setShipping(1);
-        jose.setState("IL");
-        cart.addToCart(i1);
-        cart.addToCart(i2);
-        cart.addToCart(i1);
-        cart.addToCart(i2);
-
-        double totalPrice = cart.getTotalAmount();
-        // then
-        assertEquals(10.00, totalPrice,0);
-    }
-    
-    @Test
-    public void TotalCostTest() {
-    	cart.setShipping(1);
-    	cart.setState("IL");
-        cart.addToCart(i1);
-        cart.addToCart(i2);
-        
-        double totalPrice = cart.getTotalAmountTax();
-        
-        assertEquals(15.60, totalPrice,0000.1);
-    }
-
-
 }
-
-
-

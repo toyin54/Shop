@@ -1,3 +1,9 @@
+package model;
+
+import java.util.ArrayList;
+import java.util.List;
+import model.*;
+
 public class Shopper {
     private String name;
     private String state;
@@ -11,9 +17,6 @@ public class Shopper {
         this.name = name;
     }
 
-    public int getShipping() {
-        return shipping;
-    }
     public void setState(String state) {
         this.state = state;
     }
@@ -22,7 +25,9 @@ public class Shopper {
         this.shipping = speed;
     }
 
-
+    public int getShipping(){
+        return shipping;
+    }
     public void setNoItems(int noItems) {
         this.noItems = noItems;
     }
@@ -38,5 +43,14 @@ public class Shopper {
     public String getState() {
         return state;
     }
+    public int getTotal(){
+        return 0;
+    }
+
+//    public Shopper(List<Integer> shipping) {
+//        this.shipping = shipping;
+//    }
+
 
 }
+
