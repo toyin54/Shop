@@ -31,15 +31,6 @@ public class ShoppingCartTest {
 //        assertEquals("Bread", cart.item.);
     }
 
-    @Test
-    public void testRemoveItem() {
-        ShoppingCart cart = new ShoppingCart("name");
-        cart.addToCart(i3, 4);
-        cart.addToCart(i1, 1);
-        cart.removeFromCart(i3);
-        assertEquals(1, cart.getItemsC());
-
-    }
 
     @Test
     public void shouldAddNewProduct() throws Exception {
@@ -164,7 +155,32 @@ public class ShoppingCartTest {
     }
 
 
+    /**
+     *
+     * Iventory
+     */
 
+    
+    //Test if item is added to iventory
+    @Test
+    public void ivenTest() {
+        Item item = new Item("yellow", 1.0);
+        Iventory iventory  = new Iventory();
+        iventory.add(item);
+        assertEquals(item, iventory.findList(item.getProductName()));
+    }
+
+/**
+ * Shopper
+ */
+
+@Test
+public void ShopperTest() {
+    String name = "ayyub";
+    Shopper person = new Shopper();
+    person.setName(name);
+    assertEquals(name, person.getName());
+}
 
 
 

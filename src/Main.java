@@ -24,7 +24,8 @@ public class Main {
     static Item i4 = new Item("eggs", 50);
     static Item i5 = new Item("Chicken Salami", 2);
 
-    static String  state , shipping;
+    static String  state ;
+    static int shipping;
 
         public static void shops() {
         System.out.println("----------------------");
@@ -69,8 +70,8 @@ public class Main {
         state = sc.nextLine();
         cart.setState(state); //Set State
         System.out.println("What is Your Shipping Speed");
-        shipping = sc.nextLine();
-        cart.setState(shipping); //Set State
+        shipping = sc.nextInt();
+        cart.setShipping(shipping); //Set State
 
     }
 

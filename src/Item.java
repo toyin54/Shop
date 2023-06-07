@@ -2,7 +2,7 @@ import java.util.HashMap;
 
 public class Item {
     private String productName;
-    private int quantity;
+
     private double unitPrice;
 
     private HashMap<String, Double> itemlist = new HashMap<String, Double>();
@@ -17,11 +17,6 @@ public class Item {
 
 
 
-    public String toString() {
-        String s = this.productName + ":";
-        s = s + this.quantity + "\n";
-        return s;
-    }
 
     public void setProductName(String productName) {
         this.productName = productName;
@@ -35,18 +30,10 @@ public class Item {
         return this.productName;
     }
 
-    public int getQuantity() {
-        return this.quantity;
-    }
 
     public double getUnitPrice() {
         return this.unitPrice;
     }
 
-    public void ItemList() {
-        for (String i : itemlist.keySet()) {
-            System.out.println("Product: " + i + " Price: " + itemlist.get(i));
-        }
 
-    }
 }
