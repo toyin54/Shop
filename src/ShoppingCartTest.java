@@ -1,4 +1,8 @@
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
+
+import java.io.PrintStream;
 
 import static org.junit.Assert.assertEquals;
 
@@ -30,7 +34,6 @@ public class ShoppingCartTest {
         assertEquals(3, cart.getItemsC());
 //        assertEquals("Bread", cart.item.);
     }
-
 
     @Test
     public void shouldAddNewProduct() throws Exception {
@@ -124,36 +127,6 @@ public class ShoppingCartTest {
     }
 
 
-    /***
-     * Item
-     */
-
-    @Test
-    public void testSetName() {
-        Item item = new Item("apple", 1.0);
-        item.setProductName("orange");
-        assertEquals("orange", item.getProductName());
-    }
-
-    @Test
-    public void testGetName() {
-        Item item = new Item("berry", 1.0);
-        assertEquals("berry", item.getProductName());
-    }
-
-    @Test
-    public void testSetPrice() {
-        Item item = new Item("berry", 1.0);
-        item.setUnitPrice(2.0);
-        assertEquals(2.0, item.getUnitPrice(), 0);
-    }
-
-    @Test
-    public void testGetPrice() {
-        Item item = new Item("yellow", 1.0);
-        assertEquals(1.0, item.getUnitPrice(),0);
-    }
-
 
     /**
      *
@@ -161,27 +134,73 @@ public class ShoppingCartTest {
      */
 
     
-    //Test if item is added to iventory
-    @Test
-    public void ivenTest() {
-        Item item = new Item("yellow", 1.0);
-        Iventory iventory  = new Iventory();
-        iventory.add(item);
-        assertEquals(item, iventory.findList(item.getProductName()));
-    }
+
 
 /**
  * Shopper
  */
 
-@Test
-public void ShopperTest() {
-    String name = "ayyub";
-    Shopper person = new Shopper();
-    person.setName(name);
-    assertEquals(name, person.getName());
-}
 
+    //NEW TESTS
+    @Test
+    public void getStateTest(){  // tests the getState fn of ShoppingCart
+        cart.setState("IL");
+        String totest = cart.getState();
+        assertEquals(totest, "IL");
+    }
+    @Test
+    public void getShippingTest(){  //tests getShipping
+        cart.setShipping(2);
+        int totest = cart.getShipping();
+        assertEquals(totest, 2);
+    }
+    @Test
+    public void correctTaxTest(){
+        cart.setState("IL");
+        double totest = cart.getTax();
+        assertEquals(totest, 1.06, 0);
+    }
+    @Test
+    public void noTaxTest(){  //tests for when the state is not one that has a 6% tax rate
+        cart.setState("NJ");
+        double totest = cart.getTax();
+        assertEquals(totest, 1.0,0);
+
+    }
+//    @Test
+//    public void shippingCostTest(){  //items in cart total to more than $50, so shipping should be free (0)
+//        cart.setShipping(2);
+//        cart.addToCart(i4, 2);
+//        //double totest =
+//        assertEquals(cart.shippingCost(), 0, 0);
+//    }
+    @Test
+    public void shippingCostTestlessthan(){//test for when the shipping is "2" and the items in cart are less than $50
+        cart.setShipping(2);
+        assertEquals(cart.shippingCost(), 25.0, 0);
+    }
+    @Test
+    public void shippingCostTestFirst(){  //test for when shipping is "1" and cart's total is less than $50
+        cart.setShipping(1);
+        assertEquals(cart.shippingCost(), 10.0, 0);
+    }
+//    @Before
+//    public void Streams() {
+//        System.setOut(new PrintStream(outContent));
+//        // System.setErr(new PrintStream(errContent));
+//    }
+//
+//    @After
+//    public void StreamsBack() {
+//        System.setOut(originalOut);
+//        //System.setErr(originalErr);
+//    }
+//    @Test
+//    public  void getitemsTest(){
+//        cart.addToCart(i4, 1);
+//        cart.getItems();
+//        assertEquals("Eggs", outContent.toString().trim());
+//    }
 
 
 
