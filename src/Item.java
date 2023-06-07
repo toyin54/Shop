@@ -8,16 +8,27 @@ public class Item {
     private HashMap<String, Double> itemlist = new HashMap<String, Double>();
 
 
+
     Item(String productName, double unitPrice) {
         this.productName = productName;
         this.unitPrice = unitPrice;
         this.itemlist.put(this.productName, this.unitPrice);
     }
 
+
+
     public String toString() {
         String s = this.productName + ":";
         s = s + this.quantity + "\n";
         return s;
+    }
+
+    public void setProductName(String productName) {
+        this.productName = productName;
+    }
+
+    public void setUnitPrice(double unitPrice) {
+        this.unitPrice = unitPrice;
     }
 
     public String getProductName() {

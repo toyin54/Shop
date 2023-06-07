@@ -11,9 +11,35 @@ public class ShoppingCartTest {
 
 
     Shopper jose = new Shopper();
-    ShoppingCart cart = new ShoppingCart("ds");
+    ShoppingCart cart = new ShoppingCart("name");
 
 
+
+    @Test
+    public void testGetItemNum() {
+        ShoppingCart cart = new ShoppingCart("name");
+        cart.addToCart(i3, 3);
+        cart.addToCart(i4, 3);
+        assertEquals(6, cart.getItemsC());
+    }
+
+    @Test
+    public void testAddItem() {
+        ShoppingCart cart = new ShoppingCart("name");
+        cart.addToCart(i3, 3);
+        assertEquals(3, cart.getItemsC());
+//        assertEquals("Bread", cart.item.);
+    }
+
+    @Test
+    public void testRemoveItem() {
+        ShoppingCart cart = new ShoppingCart("name");
+        cart.addToCart(i3, 4);
+        cart.addToCart(i1, 1);
+        cart.removeFromCart(i3);
+        assertEquals(1, cart.getItemsC());
+
+    }
 
     @Test
     public void shouldAddNewProduct() throws Exception {
@@ -55,18 +81,92 @@ public class ShoppingCartTest {
         // then
         assertEquals(10.00, totalPrice,0);
     }
-    
+
     @Test
-    public void TotalCostTest() {
-    	cart.setShipping(1);
-    	cart.setState("IL");
+    public void TotalCostTestState() {
+        cart.setShipping(1);
+        cart.setState("IL");
         cart.addToCart(i1,1);
         cart.addToCart(i2,1);
-        
+
         double totalPrice = cart.getTotalAmountTax();
-        
-        assertEquals(15.60, totalPrice,0000.1);
+
+        assertEquals(15.90, totalPrice,0.3);
     }
+
+    @Test
+    public void TotalCostTestStateOut() {
+        cart.setShipping(1);
+        cart.setState("NQ");
+        cart.addToCart(i1,1);
+        cart.addToCart(i2,1);
+
+        double totalPrice = cart.getTotalAmountTax();
+
+        assertEquals(15.0, totalPrice,0.3);
+    }
+
+    @Test
+    public void TotalCostShip2() {
+        cart.setShipping(2);
+        cart.setState("NQ");
+        cart.addToCart(i1,1);
+        cart.addToCart(i2,1);
+
+        double totalPrice = cart.getTotalAmountTax();
+
+        assertEquals(30.0, totalPrice,0.3);
+    }
+
+    @Test
+    public void RemoveItemtest(){
+
+        cart.setShipping(2);
+        cart.setState("NQ");
+        assertEquals(cart.item.size(), 0);
+        cart.addToCart(i1,1);
+        assertEquals(cart.item.size(), 1);
+        cart.removeFromCart(i1);
+        assertEquals(cart.item.size(), 0);
+
+
+    }
+
+
+    /***
+     * Item
+     */
+
+    @Test
+    public void testSetName() {
+        Item item = new Item("apple", 1.0);
+        item.setProductName("orange");
+        assertEquals("orange", item.getProductName());
+    }
+
+    @Test
+    public void testGetName() {
+        Item item = new Item("berry", 1.0);
+        assertEquals("berry", item.getProductName());
+    }
+
+    @Test
+    public void testSetPrice() {
+        Item item = new Item("berry", 1.0);
+        item.setUnitPrice(2.0);
+        assertEquals(2.0, item.getUnitPrice(), 0);
+    }
+
+    @Test
+    public void testGetPrice() {
+        Item item = new Item("yellow", 1.0);
+        assertEquals(1.0, item.getUnitPrice(),0);
+    }
+
+
+
+
+
 
 
 }

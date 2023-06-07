@@ -91,6 +91,11 @@ public class ShoppingCart {
         }
     }
 
+    public int getItemsC() {
+
+      return item.size();
+    }
+
     public double getTax() {
         if (( stateList.contains(state))) {
             return 1.06;
@@ -135,22 +140,6 @@ public class ShoppingCart {
     }
 
 
-    public void printInvoice() {
-        ListIterator<Item> iterator3 = item.listIterator();
-        while(iterator3.hasNext()) {
-            Item item4 = iterator3.next();
-            System.out.print(item4.getProductName() + "\t");
-            System.out.print(item4.getQuantity() + "\t");
-            System.out.print(item4.getUnitPrice() + "\t");
-            System.out.println(item4.getUnitPrice() * item4.getQuantity());
-        }
-        System.out.println("\t\t\t" + "Total    : " + this.getTotalAmount());
-        this.applyCoupon(this.coupon);
-        System.out.println("\t\t\t" + "Discount : " + this.discount);
-        this.getPayableAmount();
-        System.out.println("\t\t\t" + "Tax      : " + this.tax);
-        System.out.println("\t\t\t" + "Total    : " + this.getPayableAmount());
-    }
 
 
     public static ShoppingCart getInstance(String name){

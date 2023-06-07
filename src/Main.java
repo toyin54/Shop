@@ -9,7 +9,7 @@ import java.util.Scanner;
 // Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
 // then press Enter. You can now see whitespace characters in your code.
 public class Main {
-    public static ShoppingCart cart = new ShoppingCart("ds");
+    public static ShoppingCart cart = new ShoppingCart("nma");
     public static String name;
     public static Iventory iventory = new Iventory();
     static List<Item> itemlist = new ArrayList<>();
