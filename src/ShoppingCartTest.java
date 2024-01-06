@@ -2,7 +2,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.io.PrintStream;
+import java.io.*;
 
 import static org.junit.Assert.assertEquals;
 
@@ -16,6 +16,10 @@ public class ShoppingCartTest {
 
     Shopper jose = new Shopper();
     ShoppingCart cart = new ShoppingCart("name");
+    //for testing
+    private final ByteArrayOutputStream outStr = new ByteArrayOutputStream();
+    private final PrintStream returnOut = System.out;
+
 
 
 
@@ -133,12 +137,12 @@ public class ShoppingCartTest {
      * Iventory
      */
 
-    
 
 
-/**
- * Shopper
- */
+
+    /**
+     * Shopper
+     */
 
 
     //NEW TESTS
@@ -167,13 +171,12 @@ public class ShoppingCartTest {
         assertEquals(totest, 1.0,0);
 
     }
-//    @Test
-//    public void shippingCostTest(){  //items in cart total to more than $50, so shipping should be free (0)
-//        cart.setShipping(2);
-//        cart.addToCart(i4, 2);
-//        //double totest =
-//        assertEquals(cart.shippingCost(), 0, 0);
-//    }
+    @Test
+    public void shippingCostTest(){  //items in cart total to more than $50, so shipping should be free (0)
+        cart.setShipping(2);
+        cart.addToCart(i4, 2);
+        assertEquals(cart.shippingCost(), 25, 0);
+    }
     @Test
     public void shippingCostTestlessthan(){//test for when the shipping is "2" and the items in cart are less than $50
         cart.setShipping(2);
@@ -184,23 +187,26 @@ public class ShoppingCartTest {
         cart.setShipping(1);
         assertEquals(cart.shippingCost(), 10.0, 0);
     }
-//    @Before
-//    public void Streams() {
-//        System.setOut(new PrintStream(outContent));
-//        // System.setErr(new PrintStream(errContent));
-//    }
-//
-//    @After
-//    public void StreamsBack() {
-//        System.setOut(originalOut);
-//        //System.setErr(originalErr);
-//    }
-//    @Test
-//    public  void getitemsTest(){
-//        cart.addToCart(i4, 1);
-//        cart.getItems();
-//        assertEquals("Eggs", outContent.toString().trim());
-//    }
+    @Before
+    public void Streams() {
+        System.setOut(new PrintStream(outStr));
+    }
+
+    @After
+    public void StreamsBack() {
+        System.setOut(returnOut);
+    }
+    @Test
+    public void getitemsTest(){
+        cart.addToCart(i4, 1);
+        cart.getItems();
+        assertEquals("Eggs", outStr.toString().trim());
+    }
+    @Test
+    public void getPayableTest() {
+        double totest = cart.getPayableAmount();
+        assertEquals(totest,0,0);
+    }
 
 
 

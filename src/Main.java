@@ -69,7 +69,7 @@ public class Main {
         System.out.println("What is Your State or Residence");
         state = sc.nextLine();
         cart.setState(state); //Set State
-        System.out.println("What is Your Shipping Speed");
+        System.out.println("What is Your Shipping Speed - 1 for Standard and 2 for Next Day.");
         shipping = sc.nextInt();
         cart.setShipping(shipping); //Set State
 
